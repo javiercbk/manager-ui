@@ -1,0 +1,29 @@
+<div class="container">
+  <table class="table table-bordered">
+  <thead>
+    <tr class="beautiful-header">
+      <th>Offices</th>
+      <th></th>
+      <th></th>
+      <th><button type="button" ng-click="openOfficeModal()" class="btn btn-sm btn-default">New Office</button></th>
+    </tr>
+    <tr class="beatiful-th">
+      <th>Location</th>
+      <th>Opened</th>
+      <th>Closed</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="o in offices track by o.id">
+      <td>{{o.location}}</td>
+      <td>{{o.opened | amDateFormat:'YYYY/MM/DD'}}</td>
+      <td>{{o.closed | amDateFormat:'YYYY/MM/DD'}}</td>
+      <td>
+        <button type="button" ng-disabled="!o.id && o.deleting" ng-click="openOfficeModal(o, $index)" class="btn btn-sm btn-primary">Edit</button>
+        <button type="button" ng-disabled="!o.id && o.deleting" ng-click="delete(o.id, $index)" class="btn btn-sm btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

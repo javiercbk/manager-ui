@@ -1,0 +1,32 @@
+<div class="container">
+  <table class="table table-bordered">
+  <thead>
+    <tr class="beautiful-header">
+      <th>Employees</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th><button type="button" ng-click="openEmployeeModal()" class="btn btn-sm btn-default">New Employee</button></th>
+    </tr>
+    <tr class="beatiful-th">
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Office</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="e in employees track by e.id">
+      <td>{{e.name}}</td>
+      <td>{{e.email}}</td>
+      <td>{{e.phone}}</td>
+      <td>{{e.office.location}}</span></td>
+      <td>
+        <button type="button" ng-disabled="!e.id && e.deleting" ng-click="openEmployeeModal(e, $index)" class="btn btn-sm btn-primary">Edit</button>
+        <button type="button" ng-disabled="!e.id && e.deleting" ng-click="delete(e.id, $index)" class="btn btn-sm btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

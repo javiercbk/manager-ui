@@ -1,0 +1,60 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h3 class="modal-title">{{::title}}</h3>
+  </div>
+  <div class="modal-body">
+    <div class="center_div">
+      <form name="clientForm" class="modal-form" novalidate ng-submit="">
+        <table class="table table-borderless">
+          <tr class="control-group" ng-class="{'has-error': clientForm.name.$invalid && clientForm.name.$dirty}">
+            <td><label for="inputName">Name</label></td>
+            <td><input type="text" id="inputName" class="form-control" name="name" placeholder="Name" ng-model="client.name" required autofocus max="80"></td>
+          </tr>
+          <tr class="control-group" ng-class="{'has-error': clientForm.email.$invalid && clientForm.email.$dirty}">
+            <td><label for="inputEmail">Email</label></td>
+            <td><input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" ng-model="client.email" required max="254"></td>
+          </tr>
+          <tr>
+            <td><label for="inputPhone">Phone</label></td>
+            <td><input type="text" id="inputPhone" class="form-control" placeholder="Phone" ng-model="client.phone" max="50"></td>
+          </tr>
+          <tr>
+            <td><label for="inputProvider">Provider</label>
+            <td>
+              <div class="input-group">
+                <input type="text" id="inputProvider" class="form-control"
+                  ng-model="newProvider" placeholder="Provider"
+                  typeahead="name for provider in providers | filter:$viewValue | limitTo:8"
+                  max="50">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" ng-disabled="!acceptNewProviders" type="button" ng-click="addProvider()">Add Provider</button>
+                </span>
+              </div><!-- /input-group -->
+            </td>
+          </tr>
+          <tr class="list-group">
+            <td></td>
+            <td>
+              <div class="list-group-item" ng-repeat="p in providers track by p.id">
+                <span><input type="checkbox" ng-model="providers[$index].isProvider"></span>
+                <span ng-show="p.editing"><input type="text" class="form-control"
+                  ng-model="providers[$index].newName"
+                  ng-keyup="providerKeyUp($event, p.id, $index)"
+                  ng-blur="providerInputBlur(p.id, $index)"
+                  placeholder="Provider" max="100"></span>
+                <span ng-show="!p.editing">{{p.name}}</span>
+                <span><i class="glyphicon glyphicon-trash manager-action-icon" ng-click="deleteProvider(p.id, $index)"></i></span>
+                <span><i class="glyphicon glyphicon-edit manager-action-icon" ng-click="editProvider(p.id, $index)"></i></span>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button ng-if="client.id" class="btn btn-danger danger-action-footer" type="button" ng-click="delete()">Delete</button>
+    <button class="btn btn-primary" type="button" ng-disabled="clientForm.$invalid" ng-click="save()">Save</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

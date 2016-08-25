@@ -1,0 +1,32 @@
+{
+  "name": "manager-ui",
+  "authors": [
+    "Javier Lecuona <javier.lecuona@willdom.com>"
+  ],
+  "description": "manager project html frontend",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "bootstrap": "^3.3.6",
+    "angular-bootstrap": "^1.3.2",
+    "font-awesome": "fontawesome#^4.6.1",
+    "angular-resource": "^1.5.5",
+    "moment": "^2.13.0",
+    "angular-moment": "^0.10.3",
+    "moment-timezone": "^0.5.3"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.5.3"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css"
+      ]
+    }
+  }
+}

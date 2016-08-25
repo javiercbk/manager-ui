@@ -1,0 +1,61 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h3 class="modal-title">{{::title}}</h3>
+  </div>
+  <div class="modal-body">
+    <div class="center_div">
+      <form name="employeeForm" class="modal-form" novalidate ng-submit="">
+        <table class="table table-borderless">
+          <tr class="control-group" ng-class="{'has-error': employeeForm.name.$invalid && employeeForm.name.$dirty}">
+            <td><label for="inputName">Name</label></td>
+            <td><input type="text" id="inputName" class="form-control" name="name" placeholder="Name" ng-model="employee.name" required autofocus max="80"></td>
+          </tr>
+          <tr class="control-group" ng-class="{'has-error': employeeForm.email.$invalid && employeeForm.email.$dirty}">
+            <td><label for="inputEmail">Email</label></td>
+            <td><input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" ng-model="employee.email" required max="254"></td>
+          </tr>
+          <tr>
+            <td><label for="inputPhone">Phone</label></td>
+            <td><input type="text" id="inputPhone" class="form-control" placeholder="Phone" ng-model="employee.phone" max="50"></td>
+          </tr>
+          <tr class="control-group" ng-class="{'has-error': employeeForm.workingSince.$invalid && employeeForm.workingSince.$dirty}">
+            <td><label for="inputWorkingSince">Working since</label></td>
+            <td>
+              <p class="input-group">
+                <input type="text" id="inputWorkingSince" class="form-control"
+                  uib-datepicker-popup="yyyy/MM/dd" ng-model="employee.workingSince"
+                  readonly
+                  required
+                  name="workingSince"
+                  is-open="wokingSincePicker.opened" datepicker-options="wokingSinceOptions"
+                  ng-required="true" close-text="Close"/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default"
+                    ng-click="wokingSincePickerOpen()">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </button>
+                </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="control-group" ng-class="{'has-error': employeeForm.officeTypeAhead.$dirty && employeeForm.hiddenOffice.$invalid}">
+            <td><label for="inputOffice">Office</label></td>
+            <td>
+              <input type="text" id="inputOffice" class="form-control"
+              ng-model="employee.office"
+              name="officeTypeAhead"
+              uib-typeahead="office as office.location for office in searchOffices($viewValue)"
+              placeholder="Office" max="100" autocomplete="off">
+              <input type="hidden" required name="hiddenOffice" ng-model="employee.office.id">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button ng-if="employee.id" class="btn btn-danger danger-action-footer" type="button" ng-click="delete()">Delete</button>
+    <button class="btn btn-primary" type="button" ng-disabled="employeeForm.$invalid" ng-click="save()">Save</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

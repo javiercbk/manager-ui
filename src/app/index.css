@@ -1,0 +1,63 @@
+body {
+  padding-top: 50px;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #FFF;
+  color: #9D9D9D;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+}
+
+.thumbnail img.pull-right {
+  width: 50px;
+}
+
+.container {
+  padding-top: 20px;
+}
+
+.beautiful-header {
+  background-color: #EFF6FA;
+  color: #5B909B;
+  font-weight: bolder;
+  border: none;
+  text-align: right;
+  align-items: center;
+}
+
+.beautiful-header th {
+  border: none !important;
+}
+
+.beatiful-th {
+  background-color: #F6F6F6;
+  color: #636363;
+  font-weight: bold;
+}
+
+.modal-form table td label {
+  padding-top: 6px;
+}
+
+.modal-form table td input {
+  padding: 5px;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+}
+
+.manager-action-icon {
+  cursor: pointer;
+  float: right;
+  padding-right: 10px;
+}
+
+.danger-action-footer{
+  float:left;
+}

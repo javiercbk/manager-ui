@@ -1,0 +1,32 @@
+<div class="container">
+  <table class="table table-bordered">
+  <thead>
+    <tr class="beautiful-header">
+      <th>Clients</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th><button type="button" ng-click="openClientModal()" class="btn btn-sm btn-default">New Client</button></th>
+    </tr>
+    <tr class="beatiful-th">
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Providers</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="c in clients track by c.id">
+      <td>{{c.name}}</td>
+      <td>{{c.email}}</td>
+      <td>{{c.phone}}</td>
+      <td><span ng-repeat="p in c.providers track by p.id">{{p.name}}{{$last ? '' : ', '}}</span></td>
+      <td>
+        <button type="button" ng-disabled="!c.id && c.deleting" ng-click="openClientModal(c, $index)" class="btn btn-sm btn-primary">Edit</button>
+        <button type="button" ng-disabled="!c.id && c.deleting" ng-click="delete(c.id, $index)" class="btn btn-sm btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
